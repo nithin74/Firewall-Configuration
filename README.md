@@ -22,3 +22,7 @@ Enable UFW
   sudo ufw enable
 
 
+View Current Rules
+
+sudo ufw status
+sudo ufw status numbered

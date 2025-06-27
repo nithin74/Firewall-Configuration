@@ -61,3 +61,44 @@ nmap -p 22 <Windows-IP>
 ✅ 5. Removed the Test Block Rule
 Went back to Inbound Rules.
 Right-click on Block_SSH_Port_22 and selected Delete.
+
+
+✅ 6. Allowed SSH (port 22)
+sudo ufw allow 22
+✅ 7. To Start and Stop SSH Service & Check the Status
+sudo systemctl start ssh
+sudo systemctl status ssh
+sudo systemctl stop ssh
+In Windows
+⚙️ Steps Performed
+✅ 1. Opened Firewall Configuration
+Opened Windows Defender Firewall with Advanced Security from Start Menu.
+✅ 2. Listed Current Inbound Rules
+Navigated to Inbound Rules in the left pane to view existing rules.
+✅ 3. Blocked Inbound Traffic on Port 22 (SSH)
+Clicked on New Rule > Port > TCP > Specific local ports: 23
+Selected Block the connection
+Applied to all profiles (Domain, Private, Public)
+Named the rule: Block_SSH_Port_22
+✅ 4. Tested the Block Rule
+Used ssh your_username@192.168.1.72  to test connectivity.
+
+Also verified using nmap from another machine:
+
+nmap -p 22 <Windows-IP>
+✅ 5. Removed the Test Block Rule
+Went back to Inbound Rules.
+Right-click on Block_SSH_Port_22 and selected Delete.
+✅ 6. To Start and Stop SSH Service & Check the Status (In Windows)
+It Checks whether the OpenSSH Server feature is installed, available, or missing on your Windows system.
+Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Server*'
+If Output looks like this OpenSSH not installed:
+Name   : OpenSSH.Server~~~~0.0.1.0
+State  : NotPresent
+To Install
+Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+Start the SSH service:
+Start-Service sshd
+
+#To Stop
+Stop-Service sshd

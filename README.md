@@ -18,6 +18,6 @@ This helps protect the system by filtering incoming and outgoing traffic based o
 
 ⚙️ Steps Performed
 Enable UFW
-# sudo ufw enable
+  sudo ufw enable
 
 

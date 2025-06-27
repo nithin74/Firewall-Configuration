@@ -25,4 +25,5 @@ Enable UFW
 View Current Rules
 
 sudo ufw status
+
 sudo ufw status numbered
